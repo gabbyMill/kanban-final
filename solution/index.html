@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./index.js" defer></script>
     <link rel="stylesheet" href="./styles.css" />
     <title>Tasks manager</title>
-</head>
-<body>
-</body>
+  </head>
+  <body>
+    <header>
+      <h1 id="page-title">Grello</h1>
+      <input id="search" />
+    </header>
+    <div id="container">
+      <section id="to-do-section">
+        <h2>To Do</h2>
+        <ul class="to-do-tasks ul-tasks"></ul>
+        <input id="add-to-do-task" placeholder="to-do" />
+        <button id="submit-add-to-do">Submit</button>
+      </section>
+      <section id="in-progress-section">
+        <h2>In Progress</h2>
+        <ul class="in-progress-tasks ul-tasks"></ul>
+        <input id="add-in-progress-task" />
+        <button id="submit-add-in-progress">Submit</button>
+      </section>
+      <section id="done-section">
+        <h2>Done</h2>
+        <ul class="done-tasks ul-tasks"></ul>
+        <input id="add-done-task" />
+        <button id="submit-add-done">Submit</button>
+      </section>
+    </div>
+  </body>
 </html>

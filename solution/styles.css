@@ -1,0 +1,21 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container {
+  display: flex;
+}
+
+section {
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.list-item {
+  display: list-item;
+}
