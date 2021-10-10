@@ -1,0 +1,133 @@
+body {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#89f1ff, #45a4cf);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container {
+  margin: 5px;
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.list-item {
+  display: list-item;
+}
+
+#footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.api-button {
+  border-top: 3px;
+  border-style: groove;
+  border-radius: 10px;
+  background-color: darkseagreen;
+  color: blueviolet;
+}
+
+.loader {
+  margin: 0 auto;
+  width: 60%;
+}
+
+section {
+  margin: 0 auto;
+  border-style: solid;
+  border: rgb(3, 1, 1);
+  border: 20px;
+  border-radius: 25px;
+  height: 100%;
+  width: 33%;
+}
+
+.ul-tasks {
+  border-style: solid;
+  border-color: rgb(6, 15, 20);
+  overflow: auto;
+  min-height: 10vh;
+  max-height: 33vh;
+  padding: 0;
+  list-style-type: none;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+}
+
+.task {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  list-style: none;
+  font-size: 130%;
+  border-style: solid;
+  border-color: rgb(96, 155, 189);
+  margin-right: 0px;
+  margin-top: 8%;
+  padding: 3%;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+input {
+  width: 70%;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+}
+.task:hover {
+  opacity: 0.5;
+  background-color: yellow;
+}
+
+.toolbar {
+  padding: 5%;
+  margin: 2px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.trash-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trash {
+  font-size: 500%;
+}
+
+.delete-text {
+  font-size: 130%;
+  text-decoration: underline;
+}
+
+#picker {
+  display: none;
+  justify-content: center;
+}
+
+.bold-font {
+  font-weight: bold;
+}
+
+.underlined {
+  text-decoration: underline;
+}
