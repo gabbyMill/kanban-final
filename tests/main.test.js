@@ -5,7 +5,7 @@ const puppeteer = require('puppeteer')
 const full4s = require('./utils/utils')
 const path = require('path')
 const basePath = path.join(__dirname, '..')
-const pagePath = path.join('file://', basePath, `/solution/index.html`)
+const pagePath = path.join('file://', basePath, `/src/index.html`)
 
 let page
 let browser
