@@ -1,3 +1,12 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-undef */
+// import './Scss/styles.scss' // makes errors in orig but not in dist
+const scss = require('./Scss/styles.scss')
+
 //  --- -> Local Storage <- --- \\ Start // Father/Folder
 
 const uls = document.querySelectorAll('ul')
@@ -12,12 +21,13 @@ const parsedTasks = JSON.parse(localStorage.getItem('tasks'))
 function paintDomFromLocalStorage(dataObject) {
   const neaterUlNames = [...uls].map((ul) => ul.className.split('-tasks')[0])
   // this leaves nicer names to work with
-  for (let key in dataObject) {
+  for (const key in dataObject) {
     for (let i = 0; i < neaterUlNames.length; i++) {
       if (key.split('-').join('') === neaterUlNames[i].split('-').join('')) {
         // find the matching ul to the mathching key (todo & to-do)
         for (let j = 0; j < dataObject[key].length; j++) {
-          // iterate over the property in the parsed version of the local storage and put it on the DOM
+          // iterate over the property in
+          // the parsed version of the local storage and put it on the DOM
           const newLi = createLiElement(dataObject[key][j], ['task'])
           uls[i].append(newLi)
         }
@@ -30,8 +40,8 @@ paintDomFromLocalStorage(parsedTasks)
 function updateParsedTasksAndSetLocalStorage() {
   const arrayOfUls = [...uls]
   for (let i = 0; i < arrayOfUls.length; i++) {
-    let category = arrayOfUls[i].classList[0].split('-tasks')[0]
-    for (let key in parsedTasks) {
+    const category = arrayOfUls[i].classList[0].split('-tasks')[0]
+    for (const key in parsedTasks) {
       if (key.split('-').join('') === category.split('-').join('')) {
         const arrayOfLis = [...arrayOfUls[i].querySelectorAll('li')]
         parsedTasks[key] = []
