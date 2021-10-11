@@ -34,7 +34,7 @@ module.exports = {
       },
     ],
   },
-  optimzation: {
+  optimization: {
     minimize: true,
     minimizer: [new CssMinimizerPlugin()],
   },
