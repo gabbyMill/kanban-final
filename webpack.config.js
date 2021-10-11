@@ -1,3 +1,9 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+
 const path = require('path')
 
 module.exports = {
@@ -8,16 +14,28 @@ module.exports = {
     publicPath: './',
     assetModuleFilename: 'images/[name][ext][query]',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+  ],
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'], // 'style-loader',
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
       },
     ],
+  },
+  optimzation: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin()],
   },
 }
