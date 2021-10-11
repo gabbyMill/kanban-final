@@ -25,59 +25,24 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-undef */
 import './Scss/styles.scss' // makes errors in orig but not in dist
-
-const uls = document.querySelectorAll('ul') // later get rid of this line
+const uls = document.querySelectorAll('ul')
 const parsedTasks = JSON.parse(localStorage.getItem('tasks'))
-
-//  --- -> Local Storage <- --- \\ Start // Father/Folder
-
+//  --- -> Local Storage <- --- \\ Start
 import paintDomFromLocalStorage from './localStorage/paintDom.js'
-
 paintDomFromLocalStorage(parsedTasks)
-
-import updateParsedTasksAndSetLocalStorage from './localStorage/setLocalStorage.js'
-
-// left to do here is js file that contains globals such as parsedtasks, uls etc...
-
-//  --- -> Local Storage <- --- \\ End // Father/Folder
-
-// --------------- -><- --------------- \\ // --------------- -><- --------------- \\
-
-//  --- -> DOM Manipulation & Event Handling <- --- \\ Start // Father/Folder
-
+//  --- -> DOM Manipulation & Event Handling <- --- \\ Start
 import addListenersToLi from './domAndEvents/addListeners'
-
 const liS = document.querySelectorAll('li')
 liS.forEach((li) => {
   addListenersToLi(li) // adds all sort of events
 })
-
-//  --- -> Alt functionality <- --- \\ Start // Child
-
-// import altHandlerFunction from './domAndEvents/altFunction'
-
-//  --- -> Alt functionality <- --- \\ End // Child
-
-//  --- -> Add Task <- --- \\ Start // Child
-
 import inputListener from './domAndEvents/inputListener.js'
 const buttons = document.querySelectorAll('button')
 buttons.forEach((button) => button.addEventListener('click', inputListener))
-
-//  --- -> Add Task <- --- \\ End ? // Child
-
-//  --- -> Make Editable <- --- \\ Start // Child
-
-//  --- -> Make Editable <- --- \\ End // Child
-
 //  --- -> Search <- --- \\ Start
 import globalSearch from './domAndEvents/globalSearch.js'
 document.querySelector('#search').addEventListener('input', globalSearch)
-
-//  --- -> Search <- --- \\ End // Child
-
 //  --- -> D&D <- --- \\ Start
-
 liS.forEach((li) => {
   li.addEventListener('dragstart', () => {
     li.classList.add('dragging')
@@ -89,56 +54,21 @@ liS.forEach((li) => {
     li.classList.remove('dragging')
   })
 })
-
 import dndFunction from './domAndEvents/dndFunction1'
 dndFunction()
-
-//  --- -> D&D <- --- \\ End
-
-//  --- -> Color Pallete <- --- \\ Start // Child
-
-let sectionToPaint
-const colorPalettes = document.querySelectorAll('.color')
-colorPalettes.forEach((cp) => {
-  cp.addEventListener('click', (e) => {
-    const colorPicker = document.querySelector('#picker')
-    colorPicker.style = 'display: flex;'
-    sectionToPaint = e.target.closest('section')
-    setTimeout(() => {
-      colorPicker.style = 'display: none;'
-    }, 5000)
-  })
-})
-
-const colorPicker = new iro.ColorPicker('#picker', {
-  width: 90,
-})
-colorPicker.on('color:change', (color) => {
-  sectionToPaint.style = `background-color: ${color.hexString}`
-})
-
-//  --- -> Color Pallete <- --- \\ End // Child
-
-//  --- -> Enter Functionality <- --- \\ Start // Child
-
-const inputs = document.querySelectorAll('input')
-inputs.forEach((input) => {
-  input.addEventListener('focus', (e) => {
-    if (e.target === document.querySelector('#search')) return
-    input.addEventListener('keydown', makeEnterSubmit)
-  })
-})
-
-function makeEnterSubmit(keydownEvent) {
-  if (keydownEvent.key === 'Enter') {
-    inputListener(keydownEvent)
-  }
-}
-
-//  --- -> Enter Functionality <- --- \\ End // Child
-
+//  --- -> Color Pallete <- --- \\ Start
+import colorPicker from './domAndEvents/colorPicker'
+colorPicker()
+//  --- -> Enter Functionality <- --- \\ Start
+import utilizeEnter from './domAndEvents/utilizeEnter'
+utilizeEnter()
 //  --- -> Bold & Underline <- --- \\ Start // Child
-
+// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
+// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
+// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
+// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
+// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
+// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
 const boldIcons = document.querySelectorAll('.bold')
 boldIcons.forEach((icon) => {
   icon.addEventListener('click', inputListener)
