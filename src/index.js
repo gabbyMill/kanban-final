@@ -39,9 +39,10 @@ liS.forEach((li) => {
 import inputListener from './domAndEvents/inputListener.js'
 const buttons = document.querySelectorAll('button')
 buttons.forEach((button) => button.addEventListener('click', inputListener))
-//  --- -> Search <- --- \\ Start
+
 import globalSearch from './domAndEvents/globalSearch.js'
 document.querySelector('#search').addEventListener('input', globalSearch)
+
 //  --- -> D&D <- --- \\ Start
 liS.forEach((li) => {
   li.addEventListener('dragstart', () => {
@@ -56,112 +57,25 @@ liS.forEach((li) => {
 })
 import dndFunction from './domAndEvents/dndFunction1'
 dndFunction()
-//  --- -> Color Pallete <- --- \\ Start
+
 import colorPicker from './domAndEvents/colorPicker'
 colorPicker()
-//  --- -> Enter Functionality <- --- \\ Start
+
 import utilizeEnter from './domAndEvents/utilizeEnter'
 utilizeEnter()
 //  --- -> Bold & Underline <- --- \\ Start // Child
-// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
-// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
-// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
-// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
-// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
-// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE// CONTINUE HERE
 const boldIcons = document.querySelectorAll('.bold')
 boldIcons.forEach((icon) => {
   icon.addEventListener('click', inputListener)
 })
-
 const underlinedIcons = document.querySelectorAll('.underline')
 underlinedIcons.forEach((icon) => {
   icon.addEventListener('click', inputListener)
 })
-
-//  --- -> Bold & Underline <- --- \\ End // Child
-
-//  --- -> DOM Manipulation & Event Handling <- --- \\ End // Father/Folder
-
-// --------------- -><- --------------- \\ // --------------- -><- --------------- \\
-
-//  --- -> Network <- --- \\ Start // Father/Folder
-
-//  --- -> createLoader <- --- \\ Start // Child
-
-function createLoader() {
-  const container = document.querySelector('#container')
-  const loader = document.createElement('img')
-  loader.className = 'loader'
-  loader.src = '../gifs/loader.gif'
-  loader.alt = 'image of loader'
-  document.body.insertBefore(loader, container)
-  return loader
-}
-
-//  --- -> Create Loader <- --- \\ End // Child
-
+//  --- -> Network <- --- \\ Start
 document.querySelector('#load-btn').addEventListener('click', loadFromApi)
 document.querySelector('#save-btn').addEventListener('click', saveToApi)
 
-//  --- -> Load From Api <- --- \\ Start // Child
+import loadFromApi from './network/load.js'
 
-async function loadFromApi() {
-  try {
-    const loader = createLoader()
-    const url = 'https://json-bins.herokuapp.com/bin/614afda34021ac0e6c080cc9'
-    const response = await fetch(url, {
-      method: 'Get',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-    // handle errors:
-    if (!response.ok) {
-      alert(response.status)
-      throw `HTTP Error ${response.status}`
-    }
-    const data = await response.json()
-    if (localStorage.tasks === data.tasks) {
-      return loader.remove()
-    } else {
-      console.log(localStorage)
-      localStorage.setItem('tasks', JSON.stringify(data.tasks))
-    }
-    loader.remove()
-    location.reload()
-  } catch (e) {
-    console.log(e)
-  }
-}
-
-//  --- -> Load From Api <- --- \\ End // Child
-
-//  --- -> Save To Api <- --- \\ Start // Child
-
-async function saveToApi() {
-  try {
-    const { tasks } = localStorage
-    const loader = createLoader()
-    const url = 'https://json-bins.herokuapp.com/bin/614afda34021ac0e6c080cc9'
-    const response = await fetch(url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ tasks: JSON.parse(tasks) }),
-    })
-    if (!response.ok) {
-      alert(response.status)
-      throw `HTTP ERROR ${response.status}`
-    }
-    loader.remove()
-  } catch (e) {
-    console.log(e)
-  }
-}
-
-//  --- -> Save To Api <- --- \\ End // Child
-
-//  --- -> Network <- --- \\ End // Father/Folder
+import saveToApi from './network/save'
