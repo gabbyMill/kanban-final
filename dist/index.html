@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- color picker -->
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <link rel="shortcut icon" href="../gifs/favicon.png" type="image/x-icon" />
+    <title>Tasks manager</title>
+    <script defer src="./app.js"></script>
+    <link href="./main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1 id="page-title">Task Manager</h1>
+      <input id="search" placeholder="Search for task" />
+      <div class="api-buttons">
+        <button id="save-btn" class="api-button save">Save</button>
+        <button id="load-btn" class="api-button load">Load</button>
+      </div>
+    </header>
+    <div id="container">
+      <section id="to-do-section" class="section">
+        <h2>To Do</h2>
+        <ul class="to-do-tasks ul-tasks"></ul>
+        <div class="bottom">
+          <input id="add-to-do-task" placeholder="Type Here" />
+          <button id="submit-add-to-do">Add</button>
+        </div>
+        <div class="toolbar">
+          <span class="icon bold">🅱</span>
+          <span class="icon underline">🅰</span>
+          <span class="icon color">🎨</span>
+        </div>
+      </section>
+      <section id="in-progress-section" class="section">
+        <h2>In Progress</h2>
+        <ul class="in-progress-tasks ul-tasks"></ul>
+        <div class="bottom">
+          <input id="add-in-progress-task" placeholder="Type Here" />
+          <button id="submit-add-in-progress">Add</button>
+        </div>
+        <div class="toolbar">
+          <span class="icon bold">🅱</span>
+          <span class="icon underline">🅰</span>
+          <span class="icon color">🎨</span>
+        </div>
+      </section>
+      <section id="done-section" class="section">
+        <h2>Done</h2>
+        <ul class="done-tasks ul-tasks"></ul>
+        <div class="bottom">
+          <input id="add-done-task" placeholder="Type Here" />
+          <button id="submit-add-done">Add</button>
+        </div>
+        <div class="toolbar">
+          <span class="icon bold">🅱</span>
+          <span class="icon underline">🅰</span>
+          <span class="icon color">🎨</span>
+        </div>
+      </section>
+    </div>
+    <footer id="footer">
+      <div id="picker"></div>
+      <ul class="trash-container">
+        <span class="delete-text"> Feed Me </span>
+        <div class="trash">🗑️</div>
+      </ul>
+    </footer>
+  </body>
+</html>
